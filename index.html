@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Word Guess Game</title>
+    <title>Movie Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Limelight&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 </head>
+
 <body>
-    
+    <section>
+        <div class="row">
+            <div class="col-lg-5 header_img"></div>
+            <div class="col-lg-3 noPadding">
+                <h1 id="title">Movie Trivia Game</h1>
+            </div>
+            <div class="col-lg-4 header_img"></div>
+        </div>
+    </section>
+    <section class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-5 mainImage">
+                <div class="row movieLetterGuess">
+                    <span class="movieLetterGuess">LETTERS GUESSED: <span id="pressedKey" class="movieLetterGuess">&nbsp;</span></span>
+                </div>
+                <div class="row movieName">
+                    <span id="movieNameComplete" class="movieFormat2">DO A CLICK OR PRESS ANY KEY TO START</span>
+                </div>
+                <div class="row movieComponents">
+                    <div class="col-lg-4 movieImage">
+                        <img id="movieFile" src="assets/images/film_logo.jpg" height="100" width="130" alt="...">
+                        <iframe id="movieAudio" width="0" height="0" src=""></iframe> 
+                    </div>
+                    <div class="col-lg-4 movieFormat">
+                        <div class="row movieFormat4">
+                            <span id="winners" class="movieFormat2">WINS: 0</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 movieFormat">
+                        <span id="guessesLeft" class="movieFormat3">GUESSES REMAINING: 15</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/99d86a1013.js"></script>
 </body>
+
 </html>

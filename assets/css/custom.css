@@ -1,0 +1,99 @@
+.header_img{
+    background-image: url("../images/film_logo.jpg");
+    background-size: contain;
+}
+
+
+.noPadding{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#title{
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    color: black;
+    margin-bottom: 0px;
+    font-family: 'Limelight', cursive;
+}
+
+.mainImage{
+    background-image: url("../images/clapperboard.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    height: 500px;
+}
+
+.movieLetterGuess{
+    position: relative;
+    top: 49%;
+    font-family: 'Limelight', cursive;
+    font-size: 10px;
+    color: whitesmoke;
+    letter-spacing: 0.1cm;
+    line-height: 0.5cm;
+    margin: auto auto;
+    padding: 1% 3%;
+}
+
+.movieName{
+    position: relative;
+    top: 45%;
+    padding: 5% 3%;
+}
+
+.movieComponents{
+    position: relative;
+    top: 32%;
+    height: 100px;
+}
+
+.movieFormat{
+    position: relative;
+    top: 78%;
+    font-family: 'Limelight', cursive;
+    color: whitesmoke;
+}
+
+.movieFormat2{
+     position: relative;
+     font-family: 'Limelight', cursive;
+     font-size: 120%;
+     color: whitesmoke;
+     letter-spacing: 0.1cm;
+     line-height: 1cm;
+     top: 45%;
+     margin: auto auto;
+
+}
+
+.movieImage{
+    position: relative;
+    top: 81%;
+    font-family: 'Limelight', cursive;
+    color: whitesmoke;
+    padding-left: 9.5%;
+}
+
+.movieFormat3{
+    position: relative;
+    top: 15%;
+    font-family: 'Limelight', cursive;
+    font-size: 95%;
+    color: whitesmoke;
+    line-height: 0.75cm;
+    letter-spacing: 0.1cm;
+}
+
+.movieFormat4{
+    position: relative;
+    top: 15%;
+    font-family: 'Limelight', cursive;
+    font-size: 101%;
+    color: whitesmoke;
+    line-height: 0.75cm;
+    letter-spacing: 0.1cm;
+}
