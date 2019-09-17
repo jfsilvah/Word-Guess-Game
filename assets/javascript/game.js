@@ -64,74 +64,26 @@ document.onclick = function (event) {
 // This function is run whenever the user presses a key.
 document.onkeyup = function (event) {
 
-   if (guessesLeft === -1) {
+   // Determines which key was pressed in ASCII code.
+   pressedKey = event.key.toUpperCase();
+   pressedKeyCode = (pressedKey.charCodeAt(0));
+   if (pressedKeyCode >= 65 && pressedKeyCode <= 90 && pressedKey.length === 1) {
+      if (guessesLeft === -1) {
 
-      computerChoice = Math.floor((Math.random() * movies.length));
-      guessesLeft = 15;
-      slashes = 0;
-      movieDiscovered = movies[computerChoice].title;
-      for (var i = 0; i < movies[computerChoice].title.length; i++) {
-         movieDiscovered = setCharAt(movieDiscovered, i, "_");
-         slashes++;
-      }
-   }
-   if (guessesLeft === 15) {
-      pressedText.textContent = "";
-      winText.textContent = "WINS: 0";
-      guessesText.textContent = "GUESSES REMAINING: 15";
-      guessesLeft = 15;
-      movieDiscovered = movies[computerChoice].title;
-      slashes = 0;
-      for (var i = 0; i < movies[computerChoice].title.length; i++) {
-         if (movieDiscovered[i] === " ") {
-            movieDiscovered = setCharAt(movieDiscovered, i, " ");
-         }
-         else {
+         computerChoice = Math.floor((Math.random() * movies.length));
+         guessesLeft = 15;
+         slashes = 0;
+         movieDiscovered = movies[computerChoice].title;
+         for (var i = 0; i < movies[computerChoice].title.length; i++) {
             movieDiscovered = setCharAt(movieDiscovered, i, "_");
             slashes++;
          }
       }
-   }
-   // Determines which key was pressed in ASCII code.
-   pressedKey = event.key.toUpperCase();
-   pressedKeyCode = (pressedKey.charCodeAt(0));
-
-   lastKey = false;
-   for (var i = 0; i < pressedKeys.length; i++) {
-      if (pressedKey === pressedKeys[i]) {
-         lastKey = true;
-      }
-   }
-
-   if (pressedKeyCode >= 65 && pressedKeyCode <= 90 && pressedKey.length === 1 && lastKey === false) {
-      lastKey = pressedKey;
       if (guessesLeft === 15) {
-         pressedText.textContent = pressedKey;
-         pressedKeys = pressedKey;
-      }
-      else {
-         pressedText.textContent = pressedText.textContent + "," + pressedKey;
-         pressedKeys = pressedKeys + pressedKey;
-      }
-
-      for (var i = 0; i < movieDiscovered.length; i++) {
-         if (pressedKey === movies[computerChoice].title[i]) {
-            movieDiscovered = setCharAt(movieDiscovered, i, pressedKey);
-            slashes--;
-         }
-      }
-
-      guessesLeft--;
-
-      if (slashes <= 0 && guessesLeft >= 0) {
-         wins++;
-         guessesLeft = 15;
-         pressedKey = "";
          pressedText.textContent = "";
-         pressedKeys = "";
-         document.getElementById("movieFile").src = movies[computerChoice].img;
-         document.getElementById("movieAudio").src = movies[computerChoice].img;
-         computerChoice = Math.floor((Math.random() * movies.length));
+         winText.textContent = "WINS: 0";
+         guessesText.textContent = "GUESSES REMAINING: 15";
+         guessesLeft = 15;
          movieDiscovered = movies[computerChoice].title;
          slashes = 0;
          for (var i = 0; i < movies[computerChoice].title.length; i++) {
@@ -144,31 +96,80 @@ document.onkeyup = function (event) {
             }
          }
       }
-      if (guessesLeft <= 0) {
-         guessesLeft = 15;
-         pressedKey = "";
-         pressedKeys = "";
-         pressedText.textContent = "";
-         document.getElementById("movieFile").src = movies[computerChoice].img;
-         computerChoice = Math.floor((Math.random() * movies.length));
-         movieDiscovered = movies[computerChoice].title;
-         slashes = 0;
-         for (var i = 0; i < movies[computerChoice].title.length; i++) {
-            if (movieDiscovered[i] === " ") {
-               movieDiscovered = setCharAt(movieDiscovered, i, " ");
+
+
+      lastKey = false;
+      for (var i = 0; i < pressedKeys.length; i++) {
+         if (pressedKey === pressedKeys[i]) {
+            lastKey = true;
+         }
+      }
+
+      if (pressedKeyCode >= 65 && pressedKeyCode <= 90 && pressedKey.length === 1 && lastKey === false) {
+         lastKey = pressedKey;
+         if (guessesLeft === 15) {
+            pressedText.textContent = pressedKey;
+            pressedKeys = pressedKey;
+         }
+         else {
+            pressedText.textContent = pressedText.textContent + "," + pressedKey;
+            pressedKeys = pressedKeys + pressedKey;
+         }
+
+         for (var i = 0; i < movieDiscovered.length; i++) {
+            if (pressedKey === movies[computerChoice].title[i]) {
+               movieDiscovered = setCharAt(movieDiscovered, i, pressedKey);
+               slashes--;
             }
-            else {
-               movieDiscovered = setCharAt(movieDiscovered, i, "_");
-               slashes++;
+         }
+
+         guessesLeft--;
+
+         if (slashes <= 0 && guessesLeft >= 0) {
+            wins++;
+            guessesLeft = 15;
+            pressedKey = "";
+            pressedText.textContent = "";
+            pressedKeys = "";
+            document.getElementById("movieFile").src = movies[computerChoice].img;
+            document.getElementById("movieAudio").src = movies[computerChoice].img;
+            computerChoice = Math.floor((Math.random() * movies.length));
+            movieDiscovered = movies[computerChoice].title;
+            slashes = 0;
+            for (var i = 0; i < movies[computerChoice].title.length; i++) {
+               if (movieDiscovered[i] === " ") {
+                  movieDiscovered = setCharAt(movieDiscovered, i, " ");
+               }
+               else {
+                  movieDiscovered = setCharAt(movieDiscovered, i, "_");
+                  slashes++;
+               }
+            }
+         }
+         if (guessesLeft <= 0) {
+            guessesLeft = 15;
+            pressedKey = "";
+            pressedKeys = "";
+            pressedText.textContent = "";
+            document.getElementById("movieFile").src = movies[computerChoice].img;
+            computerChoice = Math.floor((Math.random() * movies.length));
+            movieDiscovered = movies[computerChoice].title;
+            slashes = 0;
+            for (var i = 0; i < movies[computerChoice].title.length; i++) {
+               if (movieDiscovered[i] === " ") {
+                  movieDiscovered = setCharAt(movieDiscovered, i, " ");
+               }
+               else {
+                  movieDiscovered = setCharAt(movieDiscovered, i, "_");
+                  slashes++;
+               }
             }
          }
       }
+      winText.textContent = "WINS: " + wins;
+      guessesText.textContent = "GUESSES REMAINING: " + guessesLeft;
+      movieNameText.textContent = movieDiscovered;
    }
-
-   winText.textContent = "WINS: " + wins;
-   guessesText.textContent = "GUESSES REMAINING: " + guessesLeft;
-   movieNameText.textContent = movieDiscovered;
-
 };
 
 
