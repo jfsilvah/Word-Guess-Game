@@ -1,22 +1,18 @@
 var movies = [{
    title: "AVENGERS",
    img: "https://indiehoy.com/wp-content/uploads/2019/02/avengers-endgame-3.jpg",
-   sound: "abc"
 },
 {
    title: "IT",
    img: "https://cdn.images.express.co.uk/img/dynamic/36/590x/IT-movie-sequel-news-940882.jpg",
-   sound: "abc"
 },
 {
    title: "LION KING",
    img: "https://images-na.ssl-images-amazon.com/images/I/81MdzK4jw%2BL._SL1500_.jpg",
-   sound: "abc"
 },
 {
    title: "SPIDER MAN",
    img: "https://tanhispano.com/wp-content/uploads/2019/01/spider-man-far-from-home-e1547630582536.jpg",
-   sound: "abc"
 }
 ];
 
@@ -25,6 +21,7 @@ var wins = 0;
 var guessesLeft = -1;
 var pressedKeyCode;
 var lastKey = "@";
+var letterExists;
 var pressedKey;
 var pressedKeys = "@";
 var movieDiscovered;
@@ -44,13 +41,19 @@ document.onclick = function (event) {
 
    if (guessesLeft === -1) {
 
+      letterExists = false;
       computerChoice = Math.floor((Math.random() * movies.length));
-      guessesLeft = 15;
+      guessesLeft = 10;
       slashes = 0;
       movieDiscovered = movies[computerChoice].title;
       for (var i = 0; i < movies[computerChoice].title.length; i++) {
-         movieDiscovered = setCharAt(movieDiscovered, i, "_");
-         slashes++;
+         if (movieDiscovered[i] === " ") {
+            movieDiscovered = setCharAt(movieDiscovered, i, " ");
+         }
+         else {
+            movieDiscovered = setCharAt(movieDiscovered, i, "_");
+            slashes++;
+         }
       }
    }
 
@@ -67,11 +70,13 @@ document.onkeyup = function (event) {
    // Determines which key was pressed in ASCII code.
    pressedKey = event.key.toUpperCase();
    pressedKeyCode = (pressedKey.charCodeAt(0));
+   letterExists = false;
+   console.log(pressedKeys.length);
    if (pressedKeyCode >= 65 && pressedKeyCode <= 90 && pressedKey.length === 1) {
       if (guessesLeft === -1) {
 
          computerChoice = Math.floor((Math.random() * movies.length));
-         guessesLeft = 15;
+         guessesLeft = 10;
          slashes = 0;
          movieDiscovered = movies[computerChoice].title;
          for (var i = 0; i < movies[computerChoice].title.length; i++) {
@@ -79,11 +84,11 @@ document.onkeyup = function (event) {
             slashes++;
          }
       }
-      if (guessesLeft === 15) {
+      if (guessesLeft === 10 && pressedKeys.length <= 1 &&pressedKeys[0] === "@") {
          pressedText.textContent = "";
          winText.textContent = "WINS: 0";
-         guessesText.textContent = "GUESSES REMAINING: 15";
-         guessesLeft = 15;
+         guessesText.textContent = "GUESSES REMAINING: 10";
+         guessesLeft = 10;
          movieDiscovered = movies[computerChoice].title;
          slashes = 0;
          for (var i = 0; i < movies[computerChoice].title.length; i++) {
@@ -97,7 +102,6 @@ document.onkeyup = function (event) {
          }
       }
 
-
       lastKey = false;
       for (var i = 0; i < pressedKeys.length; i++) {
          if (pressedKey === pressedKeys[i]) {
@@ -106,8 +110,8 @@ document.onkeyup = function (event) {
       }
 
       if (pressedKeyCode >= 65 && pressedKeyCode <= 90 && pressedKey.length === 1 && lastKey === false) {
-         lastKey = pressedKey;
-         if (guessesLeft === 15) {
+         console.log(pressedKeys.length);
+         if (guessesLeft === 10 && pressedKeys.length <= 1 && pressedKeys[0] === "@") {
             pressedText.textContent = pressedKey;
             pressedKeys = pressedKey;
          }
@@ -120,17 +124,23 @@ document.onkeyup = function (event) {
             if (pressedKey === movies[computerChoice].title[i]) {
                movieDiscovered = setCharAt(movieDiscovered, i, pressedKey);
                slashes--;
+               letterExists = true;
             }
          }
 
-         guessesLeft--;
+         if (letterExists === false){
+             guessesLeft--;
+         }
 
          if (slashes <= 0 && guessesLeft >= 0) {
             wins++;
-            guessesLeft = 15;
+            var sounds = new Audio('assets/sounds/winner.mp3');
+            sounds.play();
+            console.log("sonido");
+            guessesLeft = 10;
             pressedKey = "";
             pressedText.textContent = "";
-            pressedKeys = "";
+            pressedKeys = "@";
             document.getElementById("movieFile").src = movies[computerChoice].img;
             document.getElementById("movieAudio").src = movies[computerChoice].img;
             computerChoice = Math.floor((Math.random() * movies.length));
@@ -147,9 +157,11 @@ document.onkeyup = function (event) {
             }
          }
          if (guessesLeft <= 0) {
-            guessesLeft = 15;
+            var sounds = new Audio('assets/sounds/loser.mp3');
+            sounds.play();
+            guessesLeft = 10;
             pressedKey = "";
-            pressedKeys = "";
+            pressedKeys = "@";
             pressedText.textContent = "";
             document.getElementById("movieFile").src = movies[computerChoice].img;
             computerChoice = Math.floor((Math.random() * movies.length));
@@ -171,5 +183,4 @@ document.onkeyup = function (event) {
       movieNameText.textContent = movieDiscovered;
    }
 };
-
 
