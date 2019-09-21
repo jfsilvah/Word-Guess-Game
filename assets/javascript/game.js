@@ -1,19 +1,64 @@
 var movies = [{
    title: "AVENGERS",
-   img: "https://indiehoy.com/wp-content/uploads/2019/02/avengers-endgame-3.jpg",
+   img: "https://indiehoy.com/wp-content/uploads/2019/02/avengers-endgame-3.jpg"
 },
 {
    title: "IT",
-   img: "https://cdn.images.express.co.uk/img/dynamic/36/590x/IT-movie-sequel-news-940882.jpg",
+   img: "https://cdn.images.express.co.uk/img/dynamic/36/590x/IT-movie-sequel-news-940882.jpg"
 },
 {
    title: "LION KING",
-   img: "https://images-na.ssl-images-amazon.com/images/I/81MdzK4jw%2BL._SL1500_.jpg",
+   img: "https://images-na.ssl-images-amazon.com/images/I/81MdzK4jw%2BL._SL1500_.jpg"
 },
 {
    title: "SPIDER MAN",
-   img: "https://tanhispano.com/wp-content/uploads/2019/01/spider-man-far-from-home-e1547630582536.jpg",
+   img: "https://tanhispano.com/wp-content/uploads/2019/01/spider-man-far-from-home-e1547630582536.jpg"
+},
+{
+   title: "RAMBO",
+   img: "https://i.ytimg.com/vi/YPuhNtG47M0/maxresdefault.jpg"
+},
+{
+   title: "YESTERDAY",
+   img: "https://as01.epimg.net/epik/imagenes/2019/07/02/portada/1562066728_836072_1562068553_noticia_normal_recorte1.jpg"
+},
+{
+   title: "GUASON",
+   img: "https://i.ytimg.com/vi/UEpPggajCVQ/maxresdefault.jpg"
+}, 
+{
+   title: "TOY STORY",
+   img: "https://http2.mlstatic.com/munecos-peluche-disney-toy-story-buzz-woody-jessie-manias-D_NQ_NP_732371-MLA31121277034_062019-F.jpg"
+},
+{
+   title: "DUMBO",
+   img: "https://lumiere-a.akamaihd.net/v1/images/b_dumbo2019_homeent_post-dtcipd-17808_309f7e38.jpeg?region=0,0,2048,780"
+},
+{
+   title: "ROCKETMAN",
+   img: "http://barkerhost.com/wp-content/uploads/sites/4/2019/07/oOIZ45F9NJape9gKppdXMpLlmK7-2.jpg"
+},
+{
+   title: "DRAGON BALL SUPER",
+   img: "https://www.outrightgeekery.com/wp-content/uploads/2019/01/DBZ-Broly-Logo.jpeg"
+},
+{
+   title: "TEN BUNDY",
+   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUFKLc49thsKBphw2DAx3VBQYb4RlfjBPGBHIL4Ajvoz3Hu139gw"
+},
+{
+   title: "XMEN DARK PHOENIX",
+   img: "https://pics.filmaffinity.com/X_Men_F_nix_oscura-584760870-large.jpg"
+},
+{
+   title: "CHICUAROTES",
+   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNfPAnOLgSuHESfrRgOm9AWzWHNUeuWLhzioVqSgKxWc1CxH6Qpg"
+},
+{
+   title: "LA FAVORITA",
+   img: "http://intlportal2.s3.foxfilm.com/intlportal2/5ce4f3400a81b.jpg"
 }
+
 ];
 
 var computerChoice;
